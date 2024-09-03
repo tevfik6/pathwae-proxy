@@ -11,7 +11,7 @@ RUN set -eux; \
     chmod +x pathwae;
 
 # Build the "ui" from node + yarn
-FROM docker.io/node:17-alpine
+FROM docker.io/node:alpine
 COPY ./ui /app
 WORKDIR /app
 RUN yarn install
