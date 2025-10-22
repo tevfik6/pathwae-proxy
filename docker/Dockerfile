@@ -11,16 +11,16 @@ RUN set -eux; \
     chmod +x pathwae;
 
 # Build the "ui" from node + yarn
-FROM docker.io/node:22-alpine
-COPY ./ui /app
-WORKDIR /app
-RUN yarn install
-RUN yarn run build
+# FROM docker.io/node:22-alpine
+# COPY ./ui /app
+# WORKDIR /app
+# RUN yarn install
+# RUN yarn run build
 
 # Create a scratch image with the go binary only
 FROM scratch
 COPY --from=0 /go/src/pathwae/pathwae /pathwae
-COPY --from=1 /app/dist /web
+# COPY --from=1 /app/dist /web
 
 VOLUME /certs
 EXPOSE 80 443 8080
